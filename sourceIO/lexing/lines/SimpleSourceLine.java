@@ -1,7 +1,5 @@
 package sourceIO.lexing.lines;
 
-import java.util.Arrays;
-
 import sourceIO.dao.KeyValuePair;
 
 public class SimpleSourceLine implements ISourceLine<String> {
