@@ -81,4 +81,4 @@ test-all: all-tests
 #     make test TEST_NAME=tests.packageName.TestClassName
 test: all-tests
 	@echo "Running $(TEST_NAME)..."
-	@java -jar $(JUNIT_JAR) -cp $(COMPILE_DIR) -c --disable-banner $(TEST_NAME)
+	@java -jar $(JUNIT_JAR) -cp $(COMPILE_DIR) --disable-banner -c $(TEST_NAME)

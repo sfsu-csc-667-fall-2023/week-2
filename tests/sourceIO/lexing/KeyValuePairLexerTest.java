@@ -1,28 +1,33 @@
 // package tests.sourceIO.lexing;
 
-// import java.util.Iterator;
-
 // import org.junit.jupiter.api.Test;
 // import static org.junit.jupiter.api.Assertions.assertEquals;
 
 // import sourceIO.dao.KeyValuePairCollection;
 // import sourceIO.lexing.KeyValuePairLexer;
+// import sourceIO.readers.IReader;
 
 // public class KeyValuePairLexerTest {
 // @Test
 // public void testExistence() {
-// KeyValuePairLexer<String> lexer = new KeyValuePairLexer<String>(new
-// Iterator<String>() {
+// KeyValuePairLexer<String> lexer = new KeyValuePairLexer<String>(new IReader()
+// {
+
+// @Override
+// public void close() throws Exception {
+// throw new UnsupportedOperationException("Unimplemented method 'close'");
+// }
 
 // @Override
 // public boolean hasNext() {
-// return false;
+// throw new UnsupportedOperationException("Unimplemented method 'hasNext'");
 // }
 
 // @Override
 // public String next() {
-// return "";
+// throw new UnsupportedOperationException("Unimplemented method 'next'");
 // }
+
 // });
 // }
 
@@ -33,18 +38,26 @@
 // { "key2", "value2" }
 // };
 
-// KeyValuePairLexer<String><String> lexer = new KeyValuePairLexer<String>(new
-// Iterator<String>() {
+// KeyValuePairLexer<String> lexer = new KeyValuePairLexer<String>(new IReader()
+// {
 // private int index = 0;
 
 // @Override
+// public void close() throws Exception {
+// }
+
+// @Override
 // public boolean hasNext() {
-// return index < testValues.length;
+// return this.index < 3;
 // }
 
 // @Override
 // public String next() {
-// return String.format("%s %s", testValues[index][0], testValues[index][1]);
+// if (this.index < 2) {
+// return String.join(" ", testValues[this.index++]);
+// } else {
+// return null;
+// }
 // }
 
 // });
